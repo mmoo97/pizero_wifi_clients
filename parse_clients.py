@@ -100,13 +100,16 @@ while True:
 
     if buttonA.value and buttonB.value:
         #backlight.value = False  # turn off backlight
-        Clients = "Clients: " + str(len(clients))
+        Client_Count = "Clients: " + str(len(clients))
         # Write four lines of text.
         y = top
-        draw.text((x, y), Clients, font=font, fill="#FFFFFF")
-        y += font.getsize(Clients)[1]
-        # draw.text((x, y), CPU, font=font, fill="#FFFF00")
-        # y += font.getsize(CPU)[1]
+        draw.text((x, y), client_count, font=font, fill="#FFFFFF")
+        y += font.getsize(client_count)[1]
+        max_outputs = 3
+        for i in range(max_outputs):
+            client = "".join(clients[i].split())
+            draw.text((x, y), client, font=font, fill="#FFFF00")
+            y += font.getsize(client)[1]
         # draw.text((x, y), MemUsage, font=font, fill="#00FF00")
         # y += font.getsize(MemUsage)[1]
         # draw.text((x, y), Disk, font=font, fill="#0000FF")
