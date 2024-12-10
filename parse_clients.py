@@ -65,6 +65,9 @@ buttonB = digitalio.DigitalInOut(board.D24)
 buttonA.switch_to_input()
 buttonB.switch_to_input()
 
+show_ips = False
+client_start = 0
+
 while True:
     clients = []
     with open('unformatted_output.txt') as file:
@@ -96,9 +99,6 @@ while True:
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
 
-    show_ips = False
-    client_start = 0
-
     if buttonA.value and buttonB.value:
         #backlight.value = False  # turn off backlight
         Client_Count = "Clients: " + str(len(clients))
@@ -107,13 +107,13 @@ while True:
         draw.text((x, y), Client_Count, font=font, fill="#FFFFFF")
         y += font.getsize(Client_Count)[1]
         max_outputs = 4
-        if Client_Count - client_start == 2:
+        if len(clients) - client_start == 2:
             client_start = 0
-        for i in range(client_ start, max_outputs + client_start):
+        for i in range(client_start, max_outputs + client_start):
             try:
-                client = clients[i].split()[-1]
+                client = clients[i].split('/')[-1]
                 if show_ips:
-                    client = clients[i].split()[0]
+                    client = clients[i].split('/')[0]
                 draw.text((x, y), client, font=font, fill="#FFFF00")
                 y += font.getsize(client)[1]
             except IndexError:
