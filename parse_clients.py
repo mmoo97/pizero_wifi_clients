@@ -116,7 +116,7 @@ while True:
         # y += font.getsize(Disk)[1]
         # draw.text((x, y), Temp, font=font, fill="#FF00FF")
     else:
-        #backlight.value = True  # turn on backlight
+        backlight.value = True  # turn on backlight
         
     # if buttonB.value and not buttonA.value:  # just button A pressed
     #     display.fill(color565(255, 0, 0))  # red
