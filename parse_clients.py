@@ -92,7 +92,8 @@ while True:
 
         #print(clients)
 
-    
+    # Draw a black filled box to clear the image.
+    draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
     Clients = "Clients: " + str(len(clients))
     # Write four lines of text.
