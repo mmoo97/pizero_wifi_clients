@@ -96,7 +96,8 @@ while True:
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
 
-    
+    show_ips = False
+    client_start = 0
 
     if buttonA.value and buttonB.value:
         #backlight.value = False  # turn off backlight
@@ -105,10 +106,14 @@ while True:
         y = top
         draw.text((x, y), Client_Count, font=font, fill="#FFFFFF")
         y += font.getsize(Client_Count)[1]
-        max_outputs = 3
-        for i in range(max_outputs):
+        max_outputs = 4
+        if Client_Count - client_start == 2:
+            client_start = 0
+        for i in range(client_ start, max_outputs + client_start):
             try:
-                client = "".join(clients[i].split())
+                client = clients[i].split()[-1]
+                if show_ips:
+                    client = clients[i].split()[0]
                 draw.text((x, y), client, font=font, fill="#FFFF00")
                 y += font.getsize(client)[1]
             except IndexError:
@@ -121,10 +126,10 @@ while True:
     else:
         backlight.value = True  # turn on backlight
         
-    # if buttonB.value and not buttonA.value:  # just button A pressed
-    #     display.fill(color565(255, 0, 0))  # red
-    # if buttonA.value and not buttonB.value:  # just button B pressed
-    #     display.fill(color565(0, 0, 255))  # blue
+    if buttonB.value and not buttonA.value:  # just button A pressed
+        show_ips = not show_ips
+    if buttonA.value and not buttonB.value:  # just button B pressed
+        client_start += 1
     if not buttonA.value and not buttonB.value:  # none pressed
         #display.fill(color565(0, 255, 0))  # green
         # Shell scripts for system monitoring from here:
