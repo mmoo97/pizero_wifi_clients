@@ -103,8 +103,8 @@ while True:
         Client_Count = "Clients: " + str(len(clients))
         # Write four lines of text.
         y = top
-        draw.text((x, y), client_count, font=font, fill="#FFFFFF")
-        y += font.getsize(client_count)[1]
+        draw.text((x, y), Client_Count, font=font, fill="#FFFFFF")
+        y += font.getsize(Client_Count)[1]
         max_outputs = 3
         for i in range(max_outputs):
             client = "".join(clients[i].split())
