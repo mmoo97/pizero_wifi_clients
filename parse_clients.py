@@ -59,7 +59,7 @@ font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
 # Turn on the backlight
 backlight = digitalio.DigitalInOut(board.D22)
 backlight.switch_to_output()
-backlight.value = True
+backlight.value = False
 buttonA = digitalio.DigitalInOut(board.D23)
 buttonB = digitalio.DigitalInOut(board.D24)
 buttonA.switch_to_input()
@@ -92,10 +92,13 @@ while True:
 
         #print(clients)
 
+    
+
+    Clients = "Clients: " + str(len(clients))
     # Write four lines of text.
     y = top
-    draw.text((x, y), "Clients: " + len(clients), font=font, fill="#FFFFFF")
-    # y += font.getsize(IP)[1]
+    draw.text((x, y), Clients, font=font, fill="#FFFFFF")
+    y += font.getsize(Clients)[1]
     # draw.text((x, y), CPU, font=font, fill="#FFFF00")
     # y += font.getsize(CPU)[1]
     # draw.text((x, y), MemUsage, font=font, fill="#00FF00")
