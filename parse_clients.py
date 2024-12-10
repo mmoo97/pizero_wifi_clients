@@ -107,9 +107,12 @@ while True:
         y += font.getsize(Client_Count)[1]
         max_outputs = 3
         for i in range(max_outputs):
-            client = "".join(clients[i].split())
-            draw.text((x, y), client, font=font, fill="#FFFF00")
-            y += font.getsize(client)[1]
+            try:
+                client = "".join(clients[i].split())
+                draw.text((x, y), client, font=font, fill="#FFFF00")
+                y += font.getsize(client)[1]
+            except IndexError:
+                break
         # draw.text((x, y), MemUsage, font=font, fill="#00FF00")
         # y += font.getsize(MemUsage)[1]
         # draw.text((x, y), Disk, font=font, fill="#0000FF")
