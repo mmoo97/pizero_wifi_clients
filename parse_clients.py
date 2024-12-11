@@ -107,7 +107,7 @@ while True:
         draw.text((x, y), Client_Count, font=font, fill="#FFFFFF")
         y += font.getsize(Client_Count)[1]
         max_outputs = 4
-        if len(clients) - client_start == 2:
+        if len(clients) - client_start <= 2:
             client_start = 0
         for i in range(client_start, max_outputs + client_start):
             try:
